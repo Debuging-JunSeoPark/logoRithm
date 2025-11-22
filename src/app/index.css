@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+
+
+/* 전역 기본 값 */
+:root {
+    --background-base: #FAFAFA;
+    --color-main: #d96060;     
+    --color-secondary: #d8e7f0;
+    font-family: 'Pretendard';
+}
+
+/* 전체 페이지 배경 */
+body {
+    background-color: var(--background-base);
+    margin: 0;
+}
+
+/* Vite 템플릿에서 쓰던 root 정렬 (원하면 유지) */
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* 유틸리티 (Tailwind @layer) */
+@layer utilities {
+
+    /* 메인 레이아웃: 가운데 600px, 흰 배경 */
+    .layout {
+        @apply max-w-[600px] mx-auto px-4 min-h-screen;
+        background-color: #ffffff;
+    }
+
+    /* 격자 배경 (흰 배경 위에 파란 그리드) */
+    .bg-grid {
+        background-image:
+            linear-gradient(to right, #d8e7f0 1px, transparent 1px),
+            linear-gradient(to bottom, #d8e7f0 1px, transparent 1px);
+        background-size: 24px 24px;
+    }
+
+    .bg-grid-sm {
+        background-image:
+            linear-gradient(to right, #d8e7f0 1px, transparent 1px),
+            linear-gradient(to bottom, #d8e7f0 1px, transparent 1px);
+        background-size: 16px 16px;
+    }
+
+    /* 손글씨 폰트용 유틸 */
+    .font-pen {
+        font-family: 'Nanum Pen Script', cursive;
+    }
+}

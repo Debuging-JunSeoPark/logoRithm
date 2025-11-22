@@ -1,12 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './app/index.css';
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <h1 className="text-4xl font-bold">Tailwind 정상 작동!</h1>
+    <div className="layout bg-grid">
+      <h1 className="text-2xl font-bold">FSD + 전역 레이아웃 테스트</h1>
+      <p className="mt-4">
+        여기는 흰색 박스 + 파란 격자 + Pretendard 폰트가 적용된 영역이야.
+      </p>
+      <p className="font-pen text-3xl mt-6">
+        나는 나눔펜스크립트야 ✍️
+      </p>
     </div>
   );
 }

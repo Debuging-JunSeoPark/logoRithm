@@ -56,6 +56,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@layer utilities {
+  .layout {
+    @apply max-w-[800px] mx-auto px-4 min-h-screen;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

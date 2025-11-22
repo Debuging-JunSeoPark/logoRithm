@@ -19,6 +19,8 @@ body {
 /* 전역 기본 값 */
 :root {
     --background-base: #FAFAFA;
+    --color-main: #d96060;     
+    --color-secondary: #d8e7f0;
     font-family: 'Pretendard';
 }
 

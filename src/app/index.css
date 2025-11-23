@@ -19,7 +19,7 @@ body {
 /* 전역 기본 값 */
 :root {
     --background-base: #FAFAFA;
-    --color-main: #d96060;     
+    --color-main: #d96060;
     --color-secondary: #d8e7f0;
     font-family: 'Pretendard';
 }
@@ -41,8 +41,9 @@ body {
 
     /* 메인 레이아웃: 가운데 600px, 흰 배경 */
     .layout {
-        @apply max-w-[600px] mx-auto px-4 min-h-screen;
+        @apply w-full max-w-[600px] mx-auto px-4 min-h-screen;
         background-color: #ffffff;
+        padding: 0 16px;
     }
 
     /* 격자 배경 (흰 배경 위에 파란 그리드) */
@@ -64,4 +65,8 @@ body {
     .font-pen {
         font-family: 'Nanum Pen Script', cursive;
     }
+
+    .border-main {
+    border-color: var(--color-main) !important;
+  }
 }

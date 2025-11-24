@@ -1,1 +1,4 @@
-export { default as Footer } from './ui/Footer.jsx';
+import Footer from './ui/Footer';
+
+export default Footer;
+

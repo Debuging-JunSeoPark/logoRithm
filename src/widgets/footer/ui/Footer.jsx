@@ -1,14 +1,13 @@
 export default function Footer() {
     return (
         <footer className="
-        fixed bottom-0 left-1/2 transform -translate-x-1/2
-        w-full max-w-[600px] h-16
-        bg-transparent
-        border-t border-white/20
-        shadow-[0_-4px_20px_rgba(0,0,0,0.12)]
-
-        flex items-center justify-around
-        z-50"
+    fixed bottom-0 left-1/2 transform -translate-x-1/2
+    w-full max-w-[600px] h-16
+    bg-white/20          /* ✨ 불투명 유리 느낌 */
+    border-t border-white/30
+    shadow-[0_-4px_20px_rgba(0,0,0,0.10)]
+    flex items-center justify-around
+    z-50"
         >
             <button className="flex-1 text-center text-sm">홈</button>
             <button className="flex-1 text-center text-sm">내 글</button>

@@ -1,5 +1,6 @@
 import '@app/index.css';
 import Header from '@widgets/header';
+import Footer from '@widgets/footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <p className="font-pen text-3xl mt-6">나는 나눔펜스크립트야 ✍️</p>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

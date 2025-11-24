@@ -3,8 +3,9 @@ export default function Footer() {
         <footer className="
     fixed bottom-0 left-1/2 transform -translate-x-1/2
     w-full max-w-[600px] h-16
-    bg-white/20          /* ✨ 불투명 유리 느낌 */
+    bg-gray-500/20         
     border-t border-white/30
+    rounded-t-2xl overflow-hidden
     shadow-[0_-4px_20px_rgba(0,0,0,0.10)]
     flex items-center justify-around
     z-50"

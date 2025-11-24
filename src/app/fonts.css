@@ -81,7 +81,7 @@
 
 /* Nanum Pen Script (400) */
 @font-face {
-    font-family: 'NanumPenScript';
+    font-family: 'Nanum Pen Script';
     src: url('../shared/assets/fonts/NanumPenScript-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;

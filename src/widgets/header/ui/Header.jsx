@@ -5,7 +5,7 @@ export default function Header() {
                 fixed left-1/2 -translate-x-1/2
                 w-full max-w-[600px] h-16
                 flex items-center justify-between px-4
-                bg-white/5 backdrop-blur-xl
+                backdrop-blur-lg
                 border border-white/15
                 rounded-b-2xl
                 z-50

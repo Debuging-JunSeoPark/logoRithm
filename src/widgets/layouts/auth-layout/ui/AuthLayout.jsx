@@ -1,8 +1,12 @@
-export default function AuthLayout({ children }) {
+import { Outlet } from "react-router-dom";
+import Header from '@widgets/header';
+
+export default function AuthLayout() {
     return (
-        <div className="min-h-screen bg-[var(--background-base)] flex justify-center">
-            <div className="max-w-[600px] w-full bg-grid min-h-screen flex items-center justify-center px-4">
-                {children}
+        <div className="min-h-screen bg-background flex justify-center">
+            <div className="layout bg-grid min-h-screen relative">
+                <Header />
+                <Outlet /> 
             </div>
         </div>
     );

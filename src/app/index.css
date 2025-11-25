@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import "./fonts.css";
 
+/* Tailwind v4 커스텀 컬러 등록 */
+@theme {
+    --color-main: #d96060;
+    --color-secondary: #d8e7f0;
+    --color-background: #FAFAFA;
+     --font-pen: 'Nanum Pen Script', cursive;
+}
+
 
 #root {
     max-width: 1280px;
@@ -30,12 +38,6 @@ body {
     margin: 0;
 }
 
-/* Vite 템플릿에서 쓰던 root 정렬 (원하면 유지) */
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
 /* 유틸리티 (Tailwind @layer) */
 @layer utilities {
 
@@ -49,8 +51,8 @@ body {
     /* 격자 배경 (흰 배경 위에 파란 그리드) */
     .bg-grid {
         background-image:
-            linear-gradient(to right, #0067A3 1px, transparent 1px),
-            linear-gradient(to bottom, #0067A3 1px, transparent 1px);
+            linear-gradient(to right, #00a2ff 1px, transparent 1px),
+            linear-gradient(to bottom, #00a2ff 1px, transparent 1px);
         background-size: 24px 24px;
     }
 
@@ -69,4 +71,5 @@ body {
     .border-main {
     border-color: var(--color-main) !important;
   }
+
 }

@@ -1,13 +1,30 @@
 import '@app/index.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import AppLayout from '@widgets/layouts/app-layout';
+import AuthLayout from '@widgets/layouts/auth-layout';
+
+import HomePage from '@/pages/home';
+import SignUpPage from '@/pages/sign-up';
 
 function App() {
   return (
-    <AppLayout>
-      <h1 className=" text-2xl font-bold">FSD + 전역 레이아웃 테스트</h1>
-      <p className="mt-4">이 안쪽 박스만 파란 격자가 적용되는 영역이야.</p>
-      <p className="font-pen text-3xl mt-6">나는 나눔펜스크립트야 ✍️</p>
-    </AppLayout>
+    <BrowserRouter>
+      <Routes>
+
+        {/* -------- App 레이아웃 (헤더/푸터 있음) -------- */}
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<HomePage />} />
+          {/* 홈, 피드, 글 상세, 채팅 등 */}
+        </Route>
+
+        {/* -------- Auth 레이아웃 (헤더/푸터 없음) -------- */}
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-up" element={<SignUpPage />} />
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 

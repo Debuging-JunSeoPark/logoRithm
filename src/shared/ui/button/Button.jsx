@@ -1,17 +1,31 @@
 export default function Button({
-    child,
+    children,
     disabled,
     variant = "primary",
     ...props
 }) {
-    const base = "w-full py-3 rounded-xl font-medium transition active:scale-[0.98]";
+    const base = "w-full py-3 mt-3 rounded-md  font-medium transition active:scale-[0.98]";
 
-    const variants = {
-        primary: "bg-main text-white disabled:bg-gray-300",
-        secondary: "bg-gray-200 text-black",
-        ghost: "bg-transparent text-main",
+   const variants = {
+        primary: `
+            bg-main text-white 
+            hover:bg-main/80
+            active:bg-main/80
+            disabled:bg-gray-300 disabled:text-gray-500 disabled:active:scale-100
+            
+        `,
+        secondary: `
+            bg-gray-200 text-black 
+            hover:bg-gray-300 
+            active:bg-gray-400
+            disabled:bg-gray-200 disabled:text-gray-400
+        `,
+        ghost: `
+            bg-transparent text-main 
+            hover:bg-main/10
+            disabled:text-gray-400
+        `,
     };
-
     return (
         <button
             className={`${base} ${variants[variant]}`}

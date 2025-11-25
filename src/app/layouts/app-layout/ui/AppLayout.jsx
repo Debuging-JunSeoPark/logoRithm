@@ -1,7 +1,7 @@
 import Header from '@widgets/header';
 import Footer from '@widgets/footer';
 
-const MainLayout = ({ children }) => {
+const AppLayout = ({ children }) => {
   return (
     <div className="min-h-screen bg-background flex justify-center">
       <div className="layout bg-grid min-h-screen relative">
@@ -13,4 +13,4 @@ const MainLayout = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default AppLayout;

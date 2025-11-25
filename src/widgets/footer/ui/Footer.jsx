@@ -4,8 +4,7 @@ export default function Footer() {
       className="
         fixed bottom-0 left-1/2 transform -translate-x-1/2
         w-full max-w-[600px] h-20
-        bg-gray-200/20
-        backdrop-blur-md
+        backdrop-blur-lg
         border-t border-gray-300/30
         rounded-t-2xl
         overflow-hidden

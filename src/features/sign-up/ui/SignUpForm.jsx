@@ -56,9 +56,9 @@ export default function SignUpForm() {
         form.name;
 
     return (
-        <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+        <form className="flex flex-col  w-full" onSubmit={handleSubmit}>
             <Input
-                label="Email"
+               //label="Email"
                 name="email"
                 value={form.email}
                 placeholder="Enter your email"
@@ -68,7 +68,7 @@ export default function SignUpForm() {
             />
 
             <Input
-                label="Password"
+                //label="Password"
                 name="password"
                 type="password"
                 value={form.password}
@@ -79,7 +79,7 @@ export default function SignUpForm() {
             />
 
             <Input
-                label="Password Check"
+                //label="Password Check"
                 name="passwordCheck"
                 type="password"
                 value={form.passwordCheck}
@@ -90,7 +90,7 @@ export default function SignUpForm() {
             />
 
             <Input
-                label="Nickname"
+                //label="Nickname"
                 name="name"
                 value={form.name}
                 placeholder="Enter your nickname"

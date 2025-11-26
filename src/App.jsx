@@ -6,6 +6,7 @@ import AuthLayout from '@widgets/layouts/auth-layout';
 
 import HomePage from '@/pages/home';
 import SignUpPage from '@/pages/sign-up';
+import { ROUTES } from '@/shared/config/routes';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 
         {/* -------- Auth 레이아웃 (헤더/푸터 없음) -------- */}
         <Route element={<AuthLayout />}>
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path={ROUTES.SIGN_UP} element={<SignUpPage />} />
         </Route>
 
       </Routes>

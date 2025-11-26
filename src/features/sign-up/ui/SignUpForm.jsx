@@ -1,59 +1,15 @@
-import { useSignUp } from "@/features/sign-up";
-import { useState } from "react";
+import { useSignUp,useSignUpForm } from "@/features/sign-up";
 import Input from "@/shared/ui/input/Input";
 import Button from "@/shared/ui/button/Button";
-import { validateEmail, validatePassword, validatePasswordCheck, validateName } from "@/features/sign-up";
 
 export default function SignUpForm() {
-    const { submitSignUp, loading, error: signUpError } = useSignUp();
-
-    const [form, setForm] = useState({
-        email: "",
-        password: "",
-        passwordCheck: "",
-        name: "",
-    });
-
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
-
-    const handleBlur = (e) => {
-        const { name, value } = e.target;
-
-        const validators = {
-            email: validateEmail,
-            password: validatePassword,
-            passwordCheck: (v) => validatePasswordCheck(form.password, v),
-            name: validateName,
-        };
-
-        const errorMessage = validators[name]?.(value) || "";
-        setErrors((prev) => ({ ...prev, [name]: errorMessage }));
-    };
+    const { submitSignUp, loading, error:signUpError  } = useSignUp();
+    const { form, errors, handleChange, handleBlur, isFormValid } = useSignUpForm();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            await submitSignUp(form);
-            alert("회원가입 성공!");
-        } catch (err) {
-            console.error(err);
-        }
+        await submitSignUp(form);
     };
-
-    const isFormValid =
-        !errors.email &&
-        !errors.password &&
-        !errors.passwordCheck &&
-        !errors.name &&
-        form.email &&
-        form.password &&
-        form.passwordCheck &&
-        form.name;
 
     return (
         <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>

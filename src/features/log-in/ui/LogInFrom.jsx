@@ -1,21 +1,20 @@
-import { useSignUp, useSignUpForm } from "@/features/sign-up";
+
+import { useLogIn, useLogInForm } from "@/features/log-in";
 import Input from "@/shared/ui/input/Input";
 import Button from "@/shared/ui/button/Button";
 
 const FIELDS = [
     { label: "Email", name: "email", placeholder: "Enter your email" },
     { label: "Password", name: "password", type: "password", placeholder: "Enter your password" },
-    { label: "Password Check", name: "passwordCheck", type: "password", placeholder: "Re-enter your password" },
-    { label: "Nickname", name: "name", placeholder: "Enter your nickname" },
 ];
 
-export default function SignUpForm() {
-    const { submitSignUp, loading, error: signUpError } = useSignUp();
-    const { form, errors, handleChange, handleBlur, isFormValid } = useSignUpForm();
+export default function LogInForm() {
+    const { submitLogIn, loading, error: logInError } = useLogIn();
+    const { form, errors, handleChange, handleBlur, isFormValid } = useLogInForm();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await submitSignUp(form);
+        await submitLogIn(form);
     };
 
     return (
@@ -31,7 +30,7 @@ export default function SignUpForm() {
                 />
             ))}
 
-            {signUpError && <p className="text-red-500 text-sm">{signUpError}</p>}
+            {logInError  && <p className="text-red-500 text-sm">{logInError}</p>}
 
             <Button disabled={!isFormValid || loading}>
                 {loading ? "Loading..." : "Submit"}

@@ -1,11 +1,13 @@
 import '@app/index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ROUTES } from '@/shared/config/routes';
 
 import AppLayout from '@widgets/layouts/app-layout';
 import AuthLayout from '@widgets/layouts/auth-layout';
 
 import HomePage from '@/pages/home';
 import SignUpPage from '@/pages/sign-up';
+import LogInPage from '@/pages/log-in';
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
 
         {/* -------- Auth 레이아웃 (헤더/푸터 없음) -------- */}
         <Route element={<AuthLayout />}>
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path={ROUTES.SIGN_UP} element={<SignUpPage />} />
+          <Route path={ROUTES.LOG_IN} element={<LogInPage />} />
         </Route>
 
       </Routes>

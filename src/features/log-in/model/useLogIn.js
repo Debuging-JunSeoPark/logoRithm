@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { logInRequest } from "@/features/log-in";
 import { tokenStorage } from "@/shared/auth";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from '@/shared/config/routes';
 
 export function useLogIn() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
+    const navigate = useNavigate();
 
 
 
@@ -26,7 +28,8 @@ export function useLogIn() {
                 throw new Error("서버 응답에 accessToken 이 없습니다.");
             }
             tokenStorage.set(token);
-            alert("로그인 성공! <추후에 삭제>")
+            alert("로그인 성공! <추후에 삭제>");
+            navigate(ROUTES.HOME);
             return result;
 
         } catch (err) {

@@ -8,6 +8,7 @@ import AuthLayout from '@widgets/layouts/auth-layout';
 import HomePage from '@/pages/home';
 import SignUpPage from '@/pages/sign-up';
 import LogInPage from '@/pages/log-in';
+import  {ProtectedRoute } from "@/app/routes";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
 
         {/* -------- App 레이아웃 (헤더/푸터 있음) -------- */}
         <Route element={<AppLayout />}>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           {/* 홈, 피드, 글 상세, 채팅 등 */}
         </Route>
 

@@ -8,6 +8,7 @@ export const http = axios.create({
 });
 
 http.interceptors.request.use((config) => {
+    console.log("🔍 인터셉터 실행됨, 토큰:", tokenStorage.get());
     const token = tokenStorage.get();
     if (token) {
         config.headers = config.headers || {};

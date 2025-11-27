@@ -23,8 +23,8 @@ export default function Footer() {
         to="/"
         className={({ isActive }) =>
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
-     after:transition-all after:duration-200
-     ${isActive
+            after:transition-all after:duration-200
+            ${isActive
             ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
             : "text-gray-700 font-normal after:h-0"
           }`

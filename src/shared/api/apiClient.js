@@ -1,16 +1,23 @@
 import { http } from "./http";
 
 export const apiClient = {
-    get(url, config) {
-        return http.get(url, config).then((res) => res.data);
+    async get(url, config) {
+        const res = await http.get(url, config);
+        return res.data;
     },
-    post(url, data, config) {
-        return http.post(url, data, config).then((res) => res.data);
+
+    async post(url, data, config) {
+        const res = await http.post(url, data, config);
+        return res.data;
     },
-    put(url, data, config) {
-        return http.put(url, data, config).then((res) => res.data);
+
+    async put(url, data, config) {
+        const res = await http.put(url, data, config);
+        return res.data;
     },
-    delete(url, config) {
-        return http.delete(url, config).then((res) => res.data);
+
+    async delete(url, config) {
+        const res = await http.delete(url, config);
+        return res.data;
     },
 };

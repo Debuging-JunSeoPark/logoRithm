@@ -9,5 +9,9 @@ export const tokenStorage = {
     },
     clear() {
         localStorage.removeItem(ACCESS_TOKEN_KEY);
-    }
+    },
+
+    isAuthenticated() {
+        return !!localStorage.getItem(ACCESS_TOKEN_KEY);
+    },
 };

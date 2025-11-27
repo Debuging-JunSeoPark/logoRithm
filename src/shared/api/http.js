@@ -1,16 +1,17 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import axios from "axios";
+import { tokenStorage } from "@/shared/auth";
 
-export const apiClient = {
-    async post(url, body) {
-        const res = await fetch(BASE_URL + url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
-        });
+export const http = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL,
+    timeout: 3000,
+    withCredentials: false,
+});
 
-        const json = await res.json();
-        if (!res.ok) throw new Error(json?.error?.message || "API Error");
-
-        return json;
+http.interceptors.request.use((config) => {
+    const token = tokenStorage.get();
+    if (token) {
+        config.headers = config.headers || {};
+        config.headers.Authorization = `Bearer ${token}`;
     }
-};
+    return config;
+});

@@ -13,7 +13,7 @@ export function PostList({ search }) {
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting && hasMore && !loading) {
-                    loadMore(); // 🔥 스크롤 시 다음 페이지 불러오기
+                    loadMore(); //스크롤 시 다음 페이지 불러오기
                 }
             },
             { threshold: 0.8 }
@@ -35,13 +35,13 @@ export function PostList({ search }) {
 
             {/* 로딩중 표시 */}
             {loading && (
-                <div className="text-gray-400 text-center py-4">불러오는 중...</div>
+                <div className="text-gray-400 text-center py-4">Loading…</div>
             )}
 
             {/* 마지막 페이지 도달 */}
             {!hasMore && !loading && (
                 <div className="text-gray-500 text-center py-4">
-                    모든 게시물을 불러왔습니다.
+                    All posts have been loaded.
                 </div>
             )}
 

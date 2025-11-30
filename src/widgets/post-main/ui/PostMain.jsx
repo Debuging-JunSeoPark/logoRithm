@@ -1,5 +1,3 @@
-"use client";
-
 import { PostList } from "@/features/post-list";
 import { PostSearch, usePostSearch } from "@/features/post-search";
 

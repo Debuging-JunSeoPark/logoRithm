@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { fetchPostDetail } from "@/features/post-detail";
 import { likePost, unlikePost, deletePost, updatePost } from "@/features/post-detail";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@shared/config/routes";
 
 export function usePostDetail(postId) {
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     async function load() {
         setLoading(true);
 
         try {
-            const detail = await fetchPostDetail(postId); 
-            setPost(detail); // detail = data.data 구조
+            const detail = await fetchPostDetail(postId);
+            setPost(detail);
         } finally {
             setLoading(false);
         }
@@ -29,24 +30,28 @@ export function usePostDetail(postId) {
                 await likePost(postId);
             }
 
-            load(); // 좋아요 변경 후 다시 갱신
+            load();
         } catch (e) {
-            console.error("좋아요 처리 실패:", e);
+            console.error("Failed to process like.:", e);
         }
     }
 
     async function onDelete() {
-        const ok = confirm("정말 이 게시물을 삭제하시겠습니까?");
-        if (!ok) return;
+    const ok = confirm("Are you sure you want to delete this post?");
+    if (!ok) return;
 
-        try {
-            await deletePost(postId);
-            alert("게시물이 삭제되었습니다.");
-            navigate("/");  // 🔥 삭제 후 홈으로 이동
-        } catch (e) {
-            alert("삭제 중 오류가 발생했습니다.");
-        }
+    try {
+        const res = await deletePost(postId);
+        console.log("DELETE RESPONSE >>>", res);
+
+        alert("The post has been deleted.");
+        navigate(ROUTES.HOME);
+    } catch (e) {
+        console.error("DELETE ERROR >>>", e);
+        alert("An error occurred while deleting the post.");
     }
+}
+
 
     async function onUpdatePost({ title, content }) {
         await updatePost(postId, { title, content });

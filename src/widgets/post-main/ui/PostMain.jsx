@@ -1,15 +1,18 @@
-"use client";
-
 import { PostList } from "@/features/post-list";
 import { PostSearch, usePostSearch } from "@/features/post-search";
 
-export function PostMain() {
+export function PostMain({ fetcher, title }) {
     const { search, setSearch } = usePostSearch();
+    const heading = title || (
+        <>
+            developer is remembered <br /> by their code
+        </>
+    );
 
     return (
         <div className="w-full min-h-screen flex flex-col">
             <h1 className="font-pen text-[36px] font-black text-center text-[#222] leading-none mt-10">
-                developer is remembered <br /> by their code
+                {heading}
             </h1>
 
             {/* 검색바 — 리스트 우측 상단 */}
@@ -18,7 +21,7 @@ export function PostMain() {
             </div>
 
             {/*검색어를 전달한 리스트 */}
-            <PostList search={search} />
+            <PostList search={search} fetcher={fetcher} />
         </div>
     );
 }

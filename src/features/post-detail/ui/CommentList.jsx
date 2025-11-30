@@ -1,8 +1,6 @@
-import { CommentItem } from "./CommentItem";
-
 export function CommentList({ comments, onDelete }) {
     if (!comments.length) {
-        return <div className="text-gray-400 text-sm">댓글이 없습니다.</div>;
+        return <div className="text-gray-400 text-sm">There is no comments.</div>;
     }
 
     return (
@@ -10,26 +8,34 @@ export function CommentList({ comments, onDelete }) {
             {comments.map((comment) => (
                 <div
                     key={comment.comment_id}
-                    className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl p-4"
+                    className="backdrop-blur-lg  border border-white rounded-xl p-4"
                 >
                     {/* 작성자 + 날짜 */}
-                    <div className="flex justify-between items-center text-gray-300 text-sm">
-                        <span>{comment.author_nickname}</span>
-                        <span>{formatDate(comment.created_at)}</span>
+                    <div className="flex justify-between items-center text-sm">
+
+                        {/* 왼쪽: 작성자 + 날짜 */}
+                        <div className="flex items-center gap-3">
+                            <span>{comment.author_name}</span>
+                            <span>{formatDate(comment.created_at)}</span>
+                        </div>
+
+                        {/* 오른쪽: 삭제 버튼 */}
+                        <button
+                            onClick={() => onDelete(comment.comment_id)}
+                            className="text-xs text-red-300 hover:text-red-400"
+                        >
+                            del
+                        </button>
+
                     </div>
 
                     {/* 내용 */}
-                    <p className="mt-2 text-gray-200 whitespace-pre-wrap">
+                    <p className="mt-2  whitespace-pre-wrap text-left">
                         {comment.content}
                     </p>
 
                     {/* 삭제 버튼 */}
-                    <button
-                        onClick={() => onDelete(comment.comment_id)}
-                        className="mt-2 text-xs text-red-300 hover:text-red-400"
-                    >
-                        삭제
-                    </button>
+
                 </div>
             ))}
         </div>

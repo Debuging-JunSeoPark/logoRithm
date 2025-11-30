@@ -1,15 +1,18 @@
 export function CommentItem({ comment, onDelete }) {
+
     return (
         <div className="border-b py-3">
-            <div className="font-semibold">{comment.author_nickname}</div>
-            <div>{comment.content}</div>
+            <div className="font-semibold text-left">{comment.author_name}</div>
+            <div className="font-semibold text-left">{comment.content}</div>
 
-            <button
-                onClick={() => onDelete(comment.comment_id)}
-                className="text-red-500 text-sm mt-2"
-            >
-                삭제
-            </button>
+            {isOwner && (
+                <button
+                    onClick={() => onDelete(comment.comment_id)}
+                    className="text-red-500 text-sm mt-2"
+                >
+                    삭제
+                </button>
+            )}
         </div>
     );
 }

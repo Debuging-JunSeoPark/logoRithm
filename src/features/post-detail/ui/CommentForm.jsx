@@ -4,14 +4,14 @@ export function CommentForm({ onSubmit }) {
     const [text, setText] = useState("");
 
     return (
-        <div className="glass p-4 rounded-2xl">
+        <div className="rounded-2xl">
             <textarea
                 className="
-                    w-full h-24 bg-white/10 text-white rounded-xl p-4
+                    w-full h-24 bg-white rounded-xl p-4
                     border border-white/20 backdrop-blur-lg
-                    focus:outline-none focus:ring-2 focus:ring-purple-300/40
+                    focus:outline-none  
                 "
-                placeholder="댓글을 남겨주세요!"
+                placeholder="Comment..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
@@ -23,10 +23,29 @@ export function CommentForm({ onSubmit }) {
                         onSubmit(text);
                         setText("");
                     }}
-                    className="glass-btn px-5 py-2"
+                    className="
+                        relative
+                        px-5 py-2
+                        text-sm font-medium text-gray-700
+                        rounded-xl
+                        bg-white
+                        shadow-[0_4px_20px_rgba(0,0,0,0.08)]
+                        overflow-hidden
+                        active:scale-95 transition
+                    "
                 >
-                    댓글 등록
+                    <span className="relative z-10 text-xs">Submit</span>
+
+                    <span
+                        className="
+                            absolute inset-0
+                            bg-gradient-to-r from-transparent via-orange-200 to-orange-400
+                            opacity-60 blur-xl
+                            pointer-events-none
+                            "
+                    />
                 </button>
+
             </div>
         </div>
     );

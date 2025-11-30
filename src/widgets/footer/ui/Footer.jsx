@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { ROUTES } from "@/shared/config/routes";
 
 export default function Footer() {
   const iconStyle = "w-6 h-6";
@@ -43,8 +44,18 @@ export default function Footer() {
         Home
       </NavLink>
 
-      {/* 2. Mine (아직 NavLink 필요 없음) */}
-      <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
+      {/* 2. Mine */}
+      <NavLink
+        to={ROUTES.MY_POSTS}
+        className={({ isActive }) =>
+          `relative flex-1 h-full flex flex-col items-center justify-center text-xs
+            after:transition-all after:duration-200
+            ${isActive
+              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+              : "text-gray-700 font-normal after:h-0"
+            }`
+        }
+      >
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
           className={iconStyle} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
@@ -57,7 +68,7 @@ export default function Footer() {
             1.125 1.125 1.125Z" />
         </svg>
         Mine
-      </button>
+      </NavLink>
 
       {/* 3. New (⭐ 활성화 기능 추가됨!!) */}
       <NavLink

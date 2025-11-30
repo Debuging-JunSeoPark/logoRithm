@@ -18,7 +18,6 @@ export function usePostListIn() {
 
     useEffect(() => {
         const controller = new AbortController();
-
         async function load() {
             try {
                 setLoading(true);
@@ -29,10 +28,8 @@ export function usePostListIn() {
                 );
 
                 const list = res?.data?.posts || [];
-
                 // 데이터 이어붙이기
                 setPosts((prev) => [...prev, ...list]);
-
                 // 마지막 페이지 체크
                 if (list.length < PAGE_SIZE) {
                     setHasMore(false);
@@ -45,9 +42,7 @@ export function usePostListIn() {
                 setLoading(false);
             }
         }
-
         load();
-
         return () => controller.abort();
     }, [page]);
 

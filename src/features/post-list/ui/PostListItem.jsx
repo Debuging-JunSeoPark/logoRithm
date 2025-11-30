@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@shared/config/routes";
 
 export function PostListItem({ post }) {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function PostListItem({ post }) {
 
   return (
     <div
-    onClick={() => navigate(`/posts/${post_id}`)}
+    onClick={() => navigate(ROUTES.POST_DETAIL(post_id))}
       className="
         backdrop-blur-lg bg-white/10
         border border-white/20

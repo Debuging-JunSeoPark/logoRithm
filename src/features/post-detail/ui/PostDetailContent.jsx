@@ -2,85 +2,143 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
     return (
         <div
             className="
-                backdrop-blur-xl bg-white/10 
-                border border-white/20 
+                backdrop-blur-xl bg-white
                 rounded-2xl shadow-lg 
-                p-8 space-y-10
+                p-8 space-y-4
             "
         >
-
-            {/* 🔹 1. 제목 + 작성자 정보 */}
-            <div className="space-y-4 pb-6 border-b border-white/20">
-                <h1 className="text-3xl font-bold">{post.title}</h1>
+            {/* 제목 + 작성자 정보 */}
+            <div className=" border-b border-white/20 ">
+                <h1 className="text-3xl font-bold text-left ">{post.title}</h1>
 
                 <div className="flex items-center gap-3">
                     {/* 프로필 */}
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md" />
 
-                    <div className="flex flex-col">
+                    <div className="flex flex-col text-left">
                         <span className="text-sm">{post.author_nickname}</span>
-                        <span className="text-xs text-gray-300">
+                        <span className="text-xs text-gray-500">
                             {formatDate(post.created_at)}
                         </span>
                     </div>
 
                     {/* 수정/삭제 */}
                     <div className="ml-auto flex gap-2">
-                        <button onClick={onEdit} className="glass-btn-small">수정</button>
-                        <button onClick={onDelete} className="glass-btn-small">삭제</button>
+                        <button
+                            onClick={onEdit}
+                            className="
+                                relative
+                                px-4 py-2
+                                text-sm font-medium text-gray-700
+                                rounded-xl
+                                bg-white
+                                shadow-[0_4px_20px_rgba(0,0,0,0.08)]
+                                overflow-hidden
+                            "
+                        >
+                            <span className="relative z-10 text-xs">Edit</span>
+
+                            {/* 그라데이션 효과 */}
+                            <span
+                                className="
+                                absolute inset-0
+                                bg-gradient-to-r from-transparent via-orange-200 to-orange-400
+                                opacity-60
+                                blur-xl
+                                "
+                            />
+                        </button>
+
+
+                        <button
+                            onClick={onDelete}
+                            className="
+                                relative
+                                px-4 py-2
+                                text-sm font-medium text-gray-700
+                                rounded-xl
+                                bg-white
+                                shadow-[0_4px_20px_rgba(0,0,0,0.08)]
+                                overflow-hidden
+                            "
+                        >
+                            <span className="relative z-10 text-xs">Del</span>
+
+                            <span
+                                className="
+                                absolute inset-0
+                                bg-gradient-to-r from-transparent via-red-200 to-red-400
+                                opacity-60
+                                blur-xl
+                                "
+                            />
+                        </button>
+
+
+
                     </div>
                 </div>
             </div>
 
 
-            {/* 🔹 2. 본문 */}
-            <div className="space-y-4">
-                <p className="text-gray-200 leading-relaxed whitespace-pre-wrap">
-                    {post.content}
-                </p>
-
-                {/* 이미지 영역 (없으면 숨김) */}
-                {post.images?.length > 0 && (
-                    <div className="space-y-2">
-                        {post.images.map((src, idx) => (
-                            <img
-                                key={idx}
-                                src={src}
-                                className="rounded-xl border border-white/10"
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
-
-
-            {/* 🔹 3. 좋아요 + 조회수 + 댓글 */}
+            {/*본문 */}
             <div
                 className="
-                mt-6 p-4 
-                rounded-xl 
-                backdrop-blur-lg bg-white/5 
-                border border-white/10 
-                flex items-center gap-6
-            "
+                    p-4 rounded-xl
+                    bg-gradient-to-br 
+                    min-h-[200px]
+                    from-amber-50 bg-gradient-to-br from-amber-100 via-orange-100 to-amber-300 text-left
+                "
+                >
+                <p className="leading-relaxed whitespace-pre-wrap">
+                    {post.content}
+                </p>
+                </div>
+
+
+            {/* 좋아요 + 조회수 + 댓글 */}
+            <div
+                className="
+                    mt-6 p-4 
+                    rounded-xl 
+                    backdrop-blur-lg bg-white/5 
+                    border border-white/10 
+                    grid grid-cols-3 gap-3
+                    text-center
+                "
             >
                 {/* 좋아요 */}
                 <button
                     onClick={onToggleLike}
                     className="
-                        glass-btn px-6 py-3 
-                        flex items-center gap-2
+                    glass-btn px-4 py-2 w-full
+                    flex items-center justify-center gap-2 
                     "
                 >
-                    {post.is_liked ? "❤️" : "🤍"} {post.like_count} 좋아요
+                    {post.is_liked ? "❤️" : "🤍"} {post.like_count}
                 </button>
 
-                {/* 수치 정보 */}
-                <div className="flex gap-4 text-gray-200">
-                    <div className="glass-badge">👀 {post.view_count} 조회수</div>
-                    <div className="glass-badge">💬 {post.comment_count} 댓글</div>
+                {/* 조회수 */}
+                <div
+                    className="
+                        glass-badge px-4 py-2 w-full
+                        flex items-center justify-center
+                        "
+                >
+                    👀 {post.view_count}
+                </div>
+
+                {/* 댓글 */}
+                <div
+                    className="
+                        glass-badge px-4 py-2 w-full
+                        flex items-center justify-center
+                        "
+                >
+                    💬 {post.comment_count}
                 </div>
             </div>
+
+
         </div>
     );
 }

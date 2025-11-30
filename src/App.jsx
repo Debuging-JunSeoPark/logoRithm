@@ -12,6 +12,7 @@ import PostDetailPage from "@/pages/post-detail";
 import PostCreatePage  from "@/pages/post-create";
 import  {ProtectedRoute } from "@/app/routes";
 
+
 function App() {
   return (
     <BrowserRouter>

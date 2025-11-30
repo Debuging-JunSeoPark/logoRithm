@@ -42,6 +42,7 @@ export function usePostListIn() {
                 setLoading(false);
             }
         }
+
         load();
         return () => controller.abort();
     }, [page]);

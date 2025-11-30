@@ -6,7 +6,22 @@
     --color-main: #d96060;
     --color-secondary: #d8e7f0;
     --color-background: #FAFAFA;
-     --font-pen: 'Nanum Pen Script', cursive;
+    --font-pen: 'Nanum Pen Script', cursive;
+
+    --glass-surface: rgba(255, 255, 255, 0.3);
+    --glass-surface-soft: rgba(255, 255, 255, 0.15);
+    --glass-surface-strong: rgba(255, 255, 255, 0.5);
+
+    --glass-border-light: rgba(255, 255, 255, 0.2);
+    --glass-border-soft: rgba(255, 255, 255, 0.1);
+
+    --glass-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
+    --glass-shadow-strong: 0 0 50px rgba(0, 0, 0, 0.2);
+
+    --glass-blur: 16px;
+    --glass-blur-strong: 24px;
+
+    --radius-glass: 20px;
 }
 
 
@@ -69,7 +84,64 @@ body {
     }
 
     .border-main {
-    border-color: var(--color-main) !important;
-  }
+        border-color: var(--color-main) !important;
+    }
 
+
+    .glass {
+        background: var(--glass-surface);
+        backdrop-filter: blur(var(--glass-blur));
+        border: 1px solid var(--glass-border-light);
+        border-radius: var(--radius-glass);
+        box-shadow: var(--glass-shadow);
+    }
+
+    .glass-soft {
+        background: var(--glass-surface-soft);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--glass-border-soft);
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .glass-strong {
+        background: var(--glass-surface-strong);
+        backdrop-filter: blur(var(--glass-blur-strong));
+        border: 1px solid var(--glass-border-light);
+        border-radius: calc(var(--radius-glass) + 4px);
+        box-shadow: var(--glass-shadow-strong);
+    }
+
+    .glass-form {
+        @apply glass px-8 py-10 flex flex-col gap-6;
+    }
+
+    .glass-card {
+        @apply glass p-4;
+    }
+
+    .glass-header {
+        background: var(--glass-surface);
+        backdrop-filter: blur(var(--glass-blur));
+        border-bottom: 1px solid var(--glass-border-light);
+        border-radius: 0 0 var(--radius-glass) var(--radius-glass);
+        box-shadow: var(--glass-shadow);
+    }
+
+    .glass-footer {
+        background: var(--glass-surface);
+        backdrop-filter: blur(var(--glass-blur));
+        border-top: 1px solid var(--glass-border-light);
+        border-radius: var(--radius-glass) var(--radius-glass) 0 0;
+        box-shadow: var(--glass-shadow);
+    }
+
+    .glass-btn {
+        @apply bg-surface backdrop-blur-glass border border-border-light shadow-glass rounded-glass text-white font-medium transition-all duration-200 hover:bg-surface-strong hover:shadow-glassStrong;
+    }
+
+    /* Small */
+    .glass-btn-small {
+        @apply glass-btn text-sm px-3 py-1.5 rounded-lg;
+    }
 }

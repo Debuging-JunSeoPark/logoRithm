@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {
-  const baseStyle = "flex-1 flex flex-col items-center justify-center text-xs transition-colors";
   const iconStyle = "w-6 h-6";
+
   return (
     <footer
       className="
@@ -17,22 +17,20 @@ export default function Footer() {
         z-50
       "
     >
-
-
+      {/* 1. Home */}
       <NavLink
         to="/"
         className={({ isActive }) =>
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
             after:transition-all after:duration-200
             ${isActive
-            ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
-            : "text-gray-700 font-normal after:h-0"
-          }`
+              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+              : "text-gray-700 font-normal after:h-0"
+            }`
         }
       >
-
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
-          className={`${iconStyle}`}
+          className={iconStyle}
           viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
             d="m2.25 12 8.954-8.955c.45-.45 1.18-.45 
@@ -45,10 +43,10 @@ export default function Footer() {
         Home
       </NavLink>
 
-
-      <button className="flex-1 flex flex-col items-center justify-center text-xs">
+      {/* 2. Mine (아직 NavLink 필요 없음) */}
+      <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
-          className="w-6 h-6 text-gray-700" viewBox="0 0 24 24">
+          className={iconStyle} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
             d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 
             1-2.247 2.118H6.622a2.25 2.25 0 0 
@@ -61,21 +59,31 @@ export default function Footer() {
         Mine
       </button>
 
-      {/* 3. 글쓰기 */}
-      <button className="flex-1 flex flex-col items-center justify-center text-xs">
+      {/* 3. New (⭐ 활성화 기능 추가됨!!) */}
+      <NavLink
+        to="/posts/new"
+        className={({ isActive }) =>
+          `relative flex-1 h-full flex flex-col items-center justify-center text-xs
+            after:transition-all after:duration-200
+            ${isActive
+              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+              : "text-gray-700 font-normal after:h-0"
+            }`
+        }
+      >
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
-          className="w-6 h-6 text-gray-700" viewBox="0 0 24 24">
+          className={iconStyle} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
             d="M12 9v6m3-3H9m12 0a9 9 0 1 
             1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
         New
-      </button>
+      </NavLink>
 
-      {/* 4. 채팅 */}
-      <button className="flex-1 flex flex-col items-center justify-center text-xs">
+      {/* 4. Chat */}
+      <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
-          className="w-6 h-6 text-gray-700" viewBox="0 0 24 24">
+          className={iconStyle} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
             d="M8.625 9.75a.375.375 0 1 
             1-.75 0 .375.375 0 0 1 .75 0Zm0 
@@ -95,10 +103,10 @@ export default function Footer() {
         Chat
       </button>
 
-      {/* 5. 마이페이지 */}
-      <button className="flex-1 flex flex-col items-center justify-center text-xs">
+      {/* 5. My Page */}
+      <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5"
-          className="w-6 h-6 text-gray-700">
+          className={iconStyle}>
           <path strokeLinecap="round" strokeLinejoin="round"
             d="M15.75 6.75a3.75 3.75 0 1 
             1-7.5 0 3.75 3.75 0 0 1 7.5 
@@ -107,7 +115,6 @@ export default function Footer() {
         </svg>
         My Page
       </button>
-
     </footer>
   );
 }

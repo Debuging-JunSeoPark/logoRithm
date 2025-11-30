@@ -10,13 +10,12 @@ export function usePostListIn() {
     const [error, setError] = useState("");
     const [hasMore, setHasMore] = useState(true);
 
-    /** 🔥 다음 페이지 로딩 */
+
     const loadMore = () => {
         if (!hasMore || loading) return;
         setPage((prev) => prev + 1);
     };
 
-    /** 🔥 페이지가 변경될 때마다 데이터 로딩(StrictMode 대응) */
     useEffect(() => {
         const controller = new AbortController();
 

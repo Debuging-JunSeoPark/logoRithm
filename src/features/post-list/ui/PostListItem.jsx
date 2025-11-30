@@ -1,5 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 export function PostListItem({ post }) {
+  const navigate = useNavigate();
   const {
+    post_id,
     title,
     author_nickname,
     created_at,
@@ -12,6 +16,7 @@ export function PostListItem({ post }) {
 
   return (
     <div
+    onClick={() => navigate(`/posts/${post_id}`)}
       className="
         backdrop-blur-lg bg-white/10
         border border-white/20

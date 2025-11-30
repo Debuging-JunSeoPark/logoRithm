@@ -28,10 +28,6 @@ export default defineConfig({
   build: {
     sourcemap: false,
 
-    commonjsOptions: {
-      include: [],
-      // 여기도 아무것도 제외하지 말아야 함
-    },
 
     rollupOptions: {
       treeshake: true,

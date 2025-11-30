@@ -3,8 +3,8 @@ import { PostListItem } from "@/features/post-list";
 import { usePostListIn } from "@/features/post-list";
 import { useFilteredPosts } from "@/features/post-list";
 
-export function PostList({ search }) {
-    const { posts, loadMore, hasMore, loading } = usePostListIn();
+export function PostList({ search, fetcher }) {
+    const { posts, loadMore, hasMore, loading } = usePostListIn(fetcher);
     const filteredPosts = useFilteredPosts(posts, search);
 
     const observerRef = useRef(null);

@@ -3,7 +3,7 @@ import { postListRequest } from "@/features/post-list";
 
 const PAGE_SIZE = 10;
 
-export function usePostListIn() {
+export function usePostListIn(fetchPosts = postListRequest) {
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ export function usePostListIn() {
             try {
                 setLoading(true);
 
-                const res = await postListRequest(
+                const res = await fetchPosts(
                     { page, size: PAGE_SIZE },
                     { signal: controller.signal }
                 );
@@ -45,7 +45,7 @@ export function usePostListIn() {
 
         load();
         return () => controller.abort();
-    }, [page]);
+    }, [page, fetchPosts]);
 
     return {
         posts,

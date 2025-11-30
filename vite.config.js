@@ -4,10 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
+
   resolve: {
     alias: {
       "@app": path.resolve(__dirname, "src/app"),
@@ -17,6 +15,26 @@ export default defineConfig({
       "@entities": path.resolve(__dirname, "src/entities"),
       "@shared": path.resolve(__dirname, "src/shared"),
       "@": path.resolve(__dirname, "src"),
+    },
+  },
+
+  optimizeDeps: {
+    exclude: [
+      // zod만 제외해도 충분히 안전함 (ESM 패키지)
+      'zod',
+    ],
+  },
+
+  build: {
+    sourcemap: false,
+
+    commonjsOptions: {
+      include: [],
+      // 여기도 아무것도 제외하지 말아야 함
+    },
+
+    rollupOptions: {
+      treeshake: true,
     },
   },
 });

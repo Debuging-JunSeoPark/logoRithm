@@ -1,9 +1,10 @@
 @import "tailwindcss";
 @import "./fonts.css";
-@import "highlight.js/styles/github.css";
 
 
-/* Tailwind v4 커스텀 컬러 등록 */
+/* --------------------------------------------
+   Tailwind v4 Theme (CSS Variables)
+--------------------------------------------- */
 @theme {
     --color-main: #d96060;
     --color-secondary: #d8e7f0;
@@ -24,9 +25,20 @@
     --glass-blur-strong: 24px;
 
     --radius-glass: 20px;
+
+    /* 기존 glass-btn에서 사용되던 토큰들 */
+    --surface: var(--glass-surface);
+    --surface-strong: var(--glass-surface-strong);
+    --backdrop-blur-glass: blur(var(--glass-blur));
+    --border-light: var(--glass-border-light);
+    --rounded-glass: var(--radius-glass);
+    --shadow-glass: var(--glass-shadow);
+    --shadow-glassStrong: var(--glass-shadow-strong);
 }
 
-
+/* --------------------------------------------
+   Global Layout
+--------------------------------------------- */
 #root {
     max-width: 1280px;
     margin: 0 auto;
@@ -37,113 +49,144 @@ body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-}
-
-
-
-/* 전역 기본 값 */
-:root {
-    --background-base: #FAFAFA;
-    --color-main: #d96060;
-    --color-secondary: #d8e7f0;
-    font-family: 'Pretendard';
-}
-
-/* 전체 페이지 배경 */
-body {
     background-color: var(--background-base);
-    margin: 0;
 }
 
-/* 유틸리티 (Tailwind @layer) */
-@layer utilities {
+/* --------------------------------------------
+   Custom Utilities (Tailwind v4 @utility)
+--------------------------------------------- */
 
-    /* 메인 레이아웃: 가운데 600px, 흰 배경 */
-    .layout {
-        @apply w-full max-w-[600px] mx-auto px-4 min-h-screen;
-        background-color: rgba(255, 255, 255, 0.7);
-        padding: 0 16px;
-    }
+/* Layout */
+@utility layout {
+    @apply w-full max-w-[600px] mx-auto px-4 min-h-screen;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0 16px;
+}
 
-    /* 격자 배경 (흰 배경 위에 파란 그리드) */
-    .bg-grid {
-        background-image:
-            linear-gradient(to right, #00a2ff 1px, transparent 1px),
-            linear-gradient(to bottom, #00a2ff 1px, transparent 1px);
-        background-size: 24px 24px;
-    }
+/* background grids */
+@utility bg-grid {
+    background-image:
+        linear-gradient(to right, #00a2ff 1px, transparent 1px),
+        linear-gradient(to bottom, #00a2ff 1px, transparent 1px);
+    background-size: 24px 24px;
+}
 
-    .bg-grid-sm {
-        background-image:
-            linear-gradient(to right, #d8e7f0 1px, transparent 1px),
-            linear-gradient(to bottom, #d8e7f0 1px, transparent 1px);
-        background-size: 16px 16px;
-    }
+@utility bg-grid-sm {
+    background-image:
+        linear-gradient(to right, #d8e7f0 1px, transparent 1px),
+        linear-gradient(to bottom, #d8e7f0 1px, transparent 1px);
+    background-size: 16px 16px;
+}
 
-    /* 손글씨 폰트용 유틸 */
-    .font-pen {
-        font-family: 'Nanum Pen Script', cursive;
-    }
+/* Font utilities */
+@utility font-pen {
+    font-family: 'Nanum Pen Script', cursive;
+}
 
-    .border-main {
-        border-color: var(--color-main) !important;
-    }
+@utility border-main {
+    border-color: var(--color-main);
+}
 
+/* --------------------------------------------
+   Glass System Utilities
+--------------------------------------------- */
 
-    .glass {
-        background: var(--glass-surface);
-        backdrop-filter: blur(var(--glass-blur));
-        border: 1px solid var(--glass-border-light);
-        border-radius: var(--radius-glass);
-        box-shadow: var(--glass-shadow);
-    }
+/* Base glass card */
+@utility glass {
+    background: var(--glass-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border-light);
+    border-radius: var(--radius-glass);
+    box-shadow: var(--glass-shadow);
+}
 
-    .glass-soft {
-        background: var(--glass-surface-soft);
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--glass-border-soft);
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
+@utility glass-soft {
+    background: var(--glass-surface-soft);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border-soft);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 
-    .glass-strong {
-        background: var(--glass-surface-strong);
-        backdrop-filter: blur(var(--glass-blur-strong));
-        border: 1px solid var(--glass-border-light);
-        border-radius: calc(var(--radius-glass) + 4px);
-        box-shadow: var(--glass-shadow-strong);
-    }
+@utility glass-strong {
+    background: var(--glass-surface-strong);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    border: 1px solid var(--glass-border-light);
+    border-radius: calc(var(--radius-glass) + 4px);
+    box-shadow: var(--glass-shadow-strong);
+}
 
-    .glass-form {
-        @apply glass px-8 py-10 flex flex-col gap-6;
-    }
+/* Form / Card variants */
+@utility glass-form {
+    @apply glass px-8 py-10 flex flex-col gap-6;
+}
 
-    .glass-card {
-        @apply glass p-4;
-    }
+@utility glass-card {
+    @apply glass p-4;
+}
 
-    .glass-header {
-        background: var(--glass-surface);
-        backdrop-filter: blur(var(--glass-blur));
-        border-bottom: 1px solid var(--glass-border-light);
-        border-radius: 0 0 var(--radius-glass) var(--radius-glass);
-        box-shadow: var(--glass-shadow);
-    }
+/* Header / Footer */
+@utility glass-header {
+    background: var(--glass-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border-light);
+    border-radius: 0 0 var(--radius-glass) var(--radius-glass);
+    box-shadow: var(--glass-shadow);
+}
 
-    .glass-footer {
-        background: var(--glass-surface);
-        backdrop-filter: blur(var(--glass-blur));
-        border-top: 1px solid var(--glass-border-light);
-        border-radius: var(--radius-glass) var(--radius-glass) 0 0;
-        box-shadow: var(--glass-shadow);
-    }
+@utility glass-footer {
+    background: var(--glass-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    border-top: 1px solid var(--glass-border-light);
+    border-radius: var(--radius-glass) var(--radius-glass) 0 0;
+    box-shadow: var(--glass-shadow);
+}
 
-    .glass-btn {
-        @apply bg-surface backdrop-blur-glass border border-border-light shadow-glass rounded-glass text-white font-medium transition-all duration-200 hover:bg-surface-strong hover:shadow-glassStrong;
-    }
+/* --------------------------------------------
+   Glass Button Utilities (복원 및 완전 작동)
+--------------------------------------------- */
 
-    /* Small */
-    .glass-btn-small {
-        @apply glass-btn text-sm px-3 py-1.5 rounded-lg;
-    }
+/* bg-surface */
+@utility bg-surface {
+    background: var(--surface);
+}
+
+/* bg-surface-strong */
+@utility bg-surface-strong {
+    background: var(--surface-strong);
+}
+
+/* backdrop-blur-glass */
+@utility backdrop-blur-glass {
+    backdrop-filter: var(--backdrop-blur-glass);
+}
+
+/* border-border-light */
+@utility border-border-light {
+    border-color: var(--border-light);
+}
+
+/* rounded-glass */
+@utility rounded-glass {
+    border-radius: var(--rounded-glass);
+}
+
+/* shadow-glass */
+@utility shadow-glass {
+    box-shadow: var(--shadow-glass);
+}
+
+/* hover:shadow-glassStrong */
+@utility shadow-glassStrong {
+    box-shadow: var(--shadow-glassStrong);
+}
+
+/* Main glass button */
+@utility glass-btn {
+    @apply bg-surface backdrop-blur-glass border border-border-light shadow-glass rounded-glass text-white font-medium transition-all duration-200 hover:bg-surface-strong hover:shadow-glassStrong;
+}
+
+/* Small button */
+@utility glass-btn-small {
+    @apply glass-btn text-sm px-3 py-1.5 rounded-lg;
 }

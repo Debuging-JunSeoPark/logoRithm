@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
+
 
 
 export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
@@ -94,7 +94,6 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                 <div className="prose prose-sm max-w-none leading-relaxed">
                     <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeHighlight]}
                     >
                     {post.content}
                     </ReactMarkdown>

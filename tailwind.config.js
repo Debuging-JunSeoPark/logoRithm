@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx,css}",
     "./src/app/**/*.css"   // @app/index.css 위치
   ],
+
   theme: {
     extend: {
       /* Colors — Semantic Tokens */

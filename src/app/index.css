@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "./fonts.css";
+@import "highlight.js/styles/github.css";
+
 
 /* Tailwind v4 커스텀 컬러 등록 */
 @theme {

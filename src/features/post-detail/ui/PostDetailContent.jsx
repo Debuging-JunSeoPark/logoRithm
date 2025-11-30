@@ -1,4 +1,10 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+
+
 export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
+
     return (
         <div
             className="
@@ -8,14 +14,15 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
             "
         >
             {/* 제목 + 작성자 정보 */}
-            <div className=" border-b border-white/20 ">
-                <h1 className="text-3xl font-bold text-left ">{post.title}</h1>
+            <div className="border-b border-white/20 pb-4">
+                <h1 className="text-3xl font-bold text-left">
+                    {post.title}
+                </h1>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mt-2">
                     {/* 프로필 */}
-
                     <div className="flex flex-col text-left">
-                        <span className="text-sm">{post.author_nickname}</span>
+                        <span className="text-sm">{post.author_name}</span>
                         <span className="text-xs text-gray-500">
                             {formatDate(post.created_at)}
                         </span>
@@ -23,6 +30,7 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
 
                     {/* 수정/삭제 */}
                     <div className="ml-auto flex gap-2">
+                        {/* Edit */}
                         <button
                             onClick={onEdit}
                             className="
@@ -32,23 +40,21 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                                 rounded-xl
                                 bg-white
                                 shadow-[0_4px_20px_rgba(0,0,0,0.08)]
-                                overflow-hidden
+                                overflow-hidden active:scale-95 transition
                             "
                         >
                             <span className="relative z-10 text-xs">Edit</span>
 
-                            {/* 그라데이션 효과 */}
                             <span
                                 className="
-                                absolute inset-0
-                                bg-gradient-to-r from-transparent via-orange-200 to-orange-400
-                                opacity-60
-                                blur-xl
+                                    absolute inset-0
+                                    bg-gradient-to-r from-transparent via-orange-200 to-orange-400
+                                    opacity-60 blur-xl pointer-events-none
                                 "
                             />
                         </button>
 
-
+                        {/* Delete */}
                         <button
                             onClick={onDelete}
                             className="
@@ -58,42 +64,42 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                                 rounded-xl
                                 bg-white
                                 shadow-[0_4px_20px_rgba(0,0,0,0.08)]
-                                overflow-hidden
+                                overflow-hidden active:scale-95 transition
                             "
                         >
                             <span className="relative z-10 text-xs">Del</span>
 
                             <span
                                 className="
-                                absolute inset-0
-                                bg-gradient-to-r from-transparent via-red-200 to-red-400
-                                opacity-60
-                                blur-xl
+                                    absolute inset-0
+                                    bg-gradient-to-r from-transparent via-red-200 to-red-400
+                                    opacity-60 blur-xl pointer-events-none
                                 "
                             />
                         </button>
-
-
-
                     </div>
                 </div>
             </div>
 
-
-            {/*본문 */}
+            {/* 본문 (Markdown 렌더링) */}
             <div
                 className="
                     p-4 rounded-xl
                     bg-gradient-to-br 
                     min-h-[200px]
-                    from-amber-50 bg-gradient-to-br from-amber-100 via-orange-100 to-amber-300 text-left
+                    from-amber-100 via-orange-100 to-amber-300
+                    text-left
                 "
                 >
-                <p className="leading-relaxed whitespace-pre-wrap">
+                <div className="prose prose-sm max-w-none leading-relaxed">
+                    <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight]}
+                    >
                     {post.content}
-                </p>
+                    </ReactMarkdown>
                 </div>
-
+                </div>
 
             {/* 좋아요 + 조회수 + 댓글 */}
             <div
@@ -110,8 +116,8 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                 <button
                     onClick={onToggleLike}
                     className="
-                    glass-btn px-4 py-2 w-full
-                    flex items-center justify-center gap-2 
+                        glass-btn px-4 py-2 w-full
+                        flex items-center justify-center gap-2
                     "
                 >
                     {post.is_liked ? "❤️" : "🤍"} {post.like_count}
@@ -122,7 +128,7 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                     className="
                         glass-badge px-4 py-2 w-full
                         flex items-center justify-center
-                        "
+                    "
                 >
                     👀 {post.view_count}
                 </div>
@@ -132,13 +138,11 @@ export function PostDetailContent({ post, onToggleLike, onDelete, onEdit }) {
                     className="
                         glass-badge px-4 py-2 w-full
                         flex items-center justify-center
-                        "
+                    "
                 >
                     💬 {post.comment_count}
                 </div>
             </div>
-
-
         </div>
     );
 }

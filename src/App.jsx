@@ -23,7 +23,6 @@ function App() {
           <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path="/posts/:postId" element={<ProtectedRoute><PostDetailPage /></ProtectedRoute>} />
           <Route path="/posts/new" element={<ProtectedRoute><PostCreatePage /></ProtectedRoute>} />
-          {/* 홈, 피드, 글 상세, 채팅 등 */}
         </Route>
 
         {/* -------- Auth 레이아웃 (헤더/푸터 없음) -------- */}

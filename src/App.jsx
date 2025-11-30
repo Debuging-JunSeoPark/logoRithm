@@ -8,6 +8,8 @@ import AuthLayout from '@widgets/layouts/auth-layout';
 import HomePage from '@/pages/home';
 import SignUpPage from '@/pages/sign-up';
 import LogInPage from '@/pages/log-in';
+import PostDetailPage from "@/pages/post-detail";
+import PostCreatePage  from "@/pages/post-create";
 import  {ProtectedRoute } from "@/app/routes";
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         {/* -------- App 레이아웃 (헤더/푸터 있음) -------- */}
         <Route element={<AppLayout />}>
           <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path="/posts/:postId" element={<ProtectedRoute><PostDetailPage /></ProtectedRoute>} />
+          <Route path="/posts/new" element={<ProtectedRoute><PostCreatePage /></ProtectedRoute>} />
           {/* 홈, 피드, 글 상세, 채팅 등 */}
         </Route>
 

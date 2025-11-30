@@ -20,4 +20,9 @@ export const apiClient = {
         const res = await http.delete(url, config);
         return res.data;
     },
+
+    async patch(url, data, config) {
+        const res = await http.patch(url, data,config);
+        return res.data;
+    },
 };

@@ -1,26 +1,33 @@
 import { useState } from "react";
 
 export function CommentForm({ onSubmit }) {
-    const [content, setContent] = useState("");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!content.trim()) return;
-        onSubmit(content);
-        setContent("");
-    };
+    const [text, setText] = useState("");
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2 mt-4">
-            <input
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                className="border p-2 flex-1 rounded"
-                placeholder="댓글 입력..."
+        <div className="glass p-4 rounded-2xl">
+            <textarea
+                className="
+                    w-full h-24 bg-white/10 text-white rounded-xl p-4
+                    border border-white/20 backdrop-blur-lg
+                    focus:outline-none focus:ring-2 focus:ring-purple-300/40
+                "
+                placeholder="댓글을 남겨주세요!"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
             />
-            <button className="px-4 bg-blue-500 text-white rounded">
-                등록
-            </button>
-        </form>
+
+            <div className="flex justify-end mt-3">
+                <button
+                    onClick={() => {
+                        if (!text.trim()) return;
+                        onSubmit(text);
+                        setText("");
+                    }}
+                    className="glass-btn px-5 py-2"
+                >
+                    댓글 등록
+                </button>
+            </div>
+        </div>
     );
 }

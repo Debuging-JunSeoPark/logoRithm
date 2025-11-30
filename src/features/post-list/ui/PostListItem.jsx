@@ -1,19 +1,49 @@
-import { usePostListIn } from "@/features/post-list/model/usePostList";
+export function PostListItem({ post }) {
+  const {
+    title,
+    author_nickname,
+    created_at,
+    like_count,
+    comment_count,
+    view_count,
+  } = post;
 
-export function PostList() {
-  const { posts, loading, error } = usePostListIn();
-
-  console.log("📌 게시물 응답 데이터:", posts);
-
-  if (loading) return <div>로딩 중...</div>;
-  if (error) return <div>에러 발생: {error}</div>;
+  const formattedDate = formatDate(created_at);
 
   return (
-    <div>
-      <h2>게시물 목록</h2>
-      <pre className="text-sm whitespace-pre-wrap">
-        {JSON.stringify(posts, null, 2)}
-      </pre>
+    <div
+      className="
+        backdrop-blur-lg bg-white/10
+        border border-white/20
+        shadow-md rounded-xl
+        p-4 flex flex-col gap-2
+      "
+    >
+      {/* 제목 */}
+      <h3 className="text-lg font-semibold flex">{title}</h3>
+
+      {/* 작성자 + 날짜 */}
+      <div className="text-xs  flex gap-2">
+        <span>{author_nickname}</span>
+        <span>·</span>
+        <span>{formattedDate}</span>
+      </div>
+
+      {/* 좋아요 / 댓글 / 뷰 */}
+      <div className="flex gap-4 text-sm mt-2">
+        <span>❤️ {like_count}</span>
+        <span>💬 {comment_count}</span>
+        <span>👀 {view_count}</span>
+      </div>
     </div>
   );
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 }

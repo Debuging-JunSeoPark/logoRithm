@@ -1,39 +1,62 @@
 import { useEffect, useState } from "react";
 import { postListRequest } from "@/features/post-list";
 
+const PAGE_SIZE = 10;
+
 export function usePostListIn() {
+    const [posts, setPosts] = useState([]);
+    const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-    const [posts, setPosts] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
 
-    async function fetchPosts() {
-        try {
-            setLoading(true);
-            setError("");
+    /** 🔥 다음 페이지 로딩 */
+    const loadMore = () => {
+        if (!hasMore || loading) return;
+        setPage((prev) => prev + 1);
+    };
 
-            const res = await postListRequest();
-
-            console.log("🔥 raw response", res);
-
-            // 실제 구조는 res.data 안에 page, size, total, posts가 있음
-            const innerData = res?.data;
-
-            if (!innerData || !innerData.posts) {
-                throw new Error("데이터 구조가 올바르지 않습니다");
-            }
-
-            setPosts(innerData.posts);
-
-        } catch (e) {
-            setError(e.message);
-        } finally {
-            setLoading(false);
-        }
-    }
-
+    /** 🔥 페이지가 변경될 때마다 데이터 로딩(StrictMode 대응) */
     useEffect(() => {
-        fetchPosts();
-    }, []);
+        const controller = new AbortController();
 
-    return { posts, loading, error };
+        async function load() {
+            try {
+                setLoading(true);
+
+                const res = await postListRequest(
+                    { page, size: PAGE_SIZE },
+                    { signal: controller.signal }
+                );
+
+                const list = res?.data?.posts || [];
+
+                // 데이터 이어붙이기
+                setPosts((prev) => [...prev, ...list]);
+
+                // 마지막 페이지 체크
+                if (list.length < PAGE_SIZE) {
+                    setHasMore(false);
+                }
+            } catch (e) {
+                if (e.name === "AbortError") return;
+                setError(e.message);
+                console.error(e);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        load();
+
+        return () => controller.abort();
+    }, [page]);
+
+    return {
+        posts,
+        loadMore,
+        loading,
+        hasMore,
+        error,
+    };
 }

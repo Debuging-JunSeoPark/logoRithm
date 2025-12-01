@@ -6,6 +6,7 @@ import { useMyPageInfo } from "@/features/my-page/model/useMyInfo";
 export default function MyPageContent() {
     const { myinfo, loading, saving, error, onUpdateMyInfo } = useMyPageInfo();
     const [nickname, setNickname] = useState("");
+    const [editing, setEditing] = useState(false);
 
     useEffect(() => {
         if (myinfo?.nickname) {
@@ -16,7 +17,18 @@ export default function MyPageContent() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!nickname.trim()) return;
-        await onUpdateMyInfo(nickname.trim());
+        try {
+            await onUpdateMyInfo(nickname.trim());
+            setEditing(false);
+        } catch {
+            // 에러 메시지는 훅에서 관리
+        }
+    };
+
+    const handleEdit = () => setEditing(true);
+    const handleCancel = () => {
+        setNickname(myinfo?.nickname || "");
+        setEditing(false);
     };
 
     if (loading) {
@@ -30,12 +42,15 @@ export default function MyPageContent() {
     return (
         <div className="w-full max-w-3xl mx-auto px-4">
             <div className="flex flex-col gap-4">
-                <h1 className="text-2xl font-bold text-[#222] text-left">내 정보</h1>
+                <h1 className="font-pen text-[80px] font-black text-center text-[#222] " >My Profile</h1>
                 <MyInfoItem
                     myinfo={myinfo}
                     nickname={nickname}
                     onChangeNickname={setNickname}
                     onSubmit={handleSubmit}
+                    onEdit={handleEdit}
+                    onCancel={handleCancel}
+                    editing={editing}
                     saving={saving}
                     error={error}
                 />

@@ -42,7 +42,7 @@ export default function MyPageContent() {
     return (
         <div className="w-full max-w-3xl mx-auto px-4">
             <div className="flex flex-col gap-4">
-                <h1 className="font-pen text-[80px] font-black text-center text-[#222] " >My Profile</h1>
+                <h1 className="font-pen text-[36px] font-black text-center text-[#222] leading-none mt-10">My Profile</h1>
                 <MyInfoItem
                     myinfo={myinfo}
                     nickname={nickname}

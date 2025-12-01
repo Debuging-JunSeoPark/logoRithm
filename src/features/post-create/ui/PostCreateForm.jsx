@@ -12,7 +12,7 @@ export function PostCreateForm({ onSubmit, loading }) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="p-6 flex flex-col gap-6"
+            className="flex flex-col gap-6"
         >
             {/* Form Container */}
             <div

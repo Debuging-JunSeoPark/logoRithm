@@ -8,10 +8,16 @@ export default function Button({
 
    const variants = {
         primary: `
-            bg-main text-white 
-            hover:bg-main/80
-            active:bg-main/80
-            disabled:bg-gray-300 disabled:text-gray-500 disabled:active:scale-100
+            bg-main/80
+            backdrop-blur-md
+            border border-white/20
+            text-white
+            shadow-lg shadow-main/50
+
+            hover:bg-main/70
+            active:bg-main/90
+
+            disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300 disabled:active:scale-100
             
         `,
         secondary: `

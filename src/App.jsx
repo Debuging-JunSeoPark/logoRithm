@@ -10,6 +10,7 @@ import LogInPage from '@/pages/log-in';
 import PostDetailPage from "@/pages/post-detail";
 import PostCreatePage  from "@/pages/post-create";
 import MyPostsPage from "@/pages/my-posts";
+import MyPage from "@/pages/my-page";
 import  {ProtectedRoute } from "@/app/routes";
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path={ROUTES.MY_POSTS} element={<ProtectedRoute><MyPostsPage /></ProtectedRoute>} />
           <Route path="/posts/:postId" element={<ProtectedRoute><PostDetailPage /></ProtectedRoute>} />
           <Route path="/posts/new" element={<ProtectedRoute><PostCreatePage /></ProtectedRoute>} />
+          <Route path={ROUTES.MY_PAGE} element={<ProtectedRoute><MyPage /></ProtectedRoute>} />
         </Route>
 
         {/* -------- Auth 레이아웃 (헤더/푸터 없음) -------- */}

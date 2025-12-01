@@ -25,9 +25,9 @@ export default function Footer() {
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
             after:transition-all after:duration-200
             ${isActive
-              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
-              : "text-gray-700 font-normal after:h-0"
-            }`
+            ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+            : "text-gray-700 font-normal after:h-0"
+          }`
         }
       >
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
@@ -51,9 +51,9 @@ export default function Footer() {
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
             after:transition-all after:duration-200
             ${isActive
-              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
-              : "text-gray-700 font-normal after:h-0"
-            }`
+            ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+            : "text-gray-700 font-normal after:h-0"
+          }`
         }
       >
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
@@ -70,16 +70,16 @@ export default function Footer() {
         Mine
       </NavLink>
 
-      {/* 3. New (⭐ 활성화 기능 추가됨!!) */}
+      {/* 3. New */}
       <NavLink
         to="/posts/new"
-        className={({ isActive }) =>
+         className={({ isActive }) =>
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
             after:transition-all after:duration-200
             ${isActive
-              ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
-              : "text-gray-700 font-normal after:h-0"
-            }`
+            ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+            : "text-gray-700 font-normal after:h-0"
+          }`
         }
       >
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
@@ -115,9 +115,19 @@ export default function Footer() {
       </button>
 
       {/* 5. My Page */}
-      <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
-        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5"
-          className={iconStyle}>
+      <NavLink
+        to="/my-page"
+        className={({ isActive }) =>
+          `relative flex-1 h-full flex flex-col items-center justify-center text-xs
+            after:transition-all after:duration-200
+            ${isActive
+            ? "text-main font-bold after:absolute after:left-0 after:right-0 after:bottom-1 after:h-2 after:bg-main"
+            : "text-gray-700 font-normal after:h-0"
+          }`
+        }
+      ><svg fill="none" strokeWidth={1.5} stroke="currentColor"
+        className={iconStyle}
+        viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round"
             d="M15.75 6.75a3.75 3.75 0 1 
             1-7.5 0 3.75 3.75 0 0 1 7.5 
@@ -125,7 +135,8 @@ export default function Footer() {
             1 15 0v.75H4.5v-.75Z" />
         </svg>
         My Page
-      </button>
+      </NavLink>
+
     </footer>
   );
 }

@@ -20,8 +20,8 @@ export function useMyPageInfo() {
         }
     }
 
-    async function onUpdateMyInfo({ nickname, profileImage }) {
-        await updateMyInfo({ nickname, profileImage });
+    async function onUpdateMyInfo(nickname) {
+        await updateMyInfo(nickname);
         await load();
     }
 
@@ -31,7 +31,8 @@ export function useMyPageInfo() {
 
     return {
         myinfo,
-        loading
+        loading,
+        onUpdateMyInfo
 
     };
 }

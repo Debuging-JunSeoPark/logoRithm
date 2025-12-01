@@ -1,7 +1,7 @@
 import { apiClient } from "@/shared/api";
 
-export async function updateMyInfo({nickname, profileImage }) {
-    const res = await apiClient.put(`/posts/${postId}`, {
+export async function updateMyInfo(nickname) {
+    const res = await apiClient.put(`/users/me`, {
         nickname,
         profileImage,
     });

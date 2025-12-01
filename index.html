@@ -2,8 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- LCP 이미지(히어로 장식) 선요청 -->
+    <link rel="preload" as="image" href="/bg-01.webp" fetchpriority="high" />
+    <!-- 크리티컬(접속 직후 필요한 최소) 스타일 인라인 -->
+    
+    <!-- 메인 CSS는 렌더 블로킹을 피하기 위해 preload+onload 패턴 사용 -->
+    <link
+      rel="preload"
+      as="style"
+      href="/src/app/index.css"
+      onload="this.rel='stylesheet'"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <noscript>
+      <link rel="stylesheet" href="/src/app/index.css" />
+    </noscript>
     <title>logorithm</title>
   </head>
   <body>

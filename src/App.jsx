@@ -1,4 +1,3 @@
-import '@app/index.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ROUTES } from '@/shared/config/routes';
 

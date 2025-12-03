@@ -13,15 +13,7 @@ export function EditPostForm({ post, onSubmit, onCancel }) {
         >
             {/* 제목 */}
             <input
-                className="
-                    w-full p-3
-                    rounded-xl
-                    bg-white/60
-                    shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                    placeholder-gray-400
-                    text-sm
-                    focus:outline-none 
-                    "
+                className="input-glass"
                 placeholder="Enter title..."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -29,17 +21,7 @@ export function EditPostForm({ post, onSubmit, onCancel }) {
 
             {/* 내용 */}
             <textarea
-                className="
-                    w-full p-3
-                    rounded-xl
-                    bg-white/60
-                    shadow-[0_2px_10px_rgba(0,0,0,0.05)]
-                    h-40
-                    text-sm
-                    placeholder-gray-400
-                    focus:outline-none
-                    resize-none
-                    "
+                className="textarea-glass-medium"
                 placeholder="Write your content..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}

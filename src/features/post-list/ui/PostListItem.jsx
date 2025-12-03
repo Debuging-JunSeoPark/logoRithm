@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@shared/config/routes";
 
-export function PostListItem({ post }) {
+export const PostListItem = memo(function PostListItem({ post }) {
   const navigate = useNavigate();
   const {
     post_id,
@@ -43,7 +44,7 @@ export function PostListItem({ post }) {
       </div>
     </div>
   );
-}
+});
 
 function formatDate(dateString) {
   const date = new Date(dateString);

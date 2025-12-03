@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @import "./fonts.css";
 
-/* --------------------------------------------
-   Tailwind v4 Theme (CSS Variables)
---------------------------------------------- */
 @theme {
     --color-main: #d96060;
     --color-secondary: #d8e7f0;
@@ -25,7 +22,7 @@
 
     --radius-glass: 20px;
 
-    /* 기존 glass-btn에서 사용되던 토큰들 */
+
     --surface: var(--glass-surface);
     --surface-strong: var(--glass-surface-strong);
     --backdrop-blur-glass: blur(var(--glass-blur));
@@ -35,9 +32,6 @@
     --shadow-glassStrong: var(--glass-shadow-strong);
 }
 
-/* --------------------------------------------
-   Global Layout
---------------------------------------------- */
 #root {
     max-width: 1280px;
     margin: 0 auto;
@@ -52,11 +46,6 @@ body {
     
 }
 
-
-
-/* --------------------------------------------
-   Custom Utilities (Tailwind v4 @utility)
---------------------------------------------- */
 
 /* Layout */
 @utility layout {
@@ -87,6 +76,30 @@ body {
 
 @utility border-main {
     border-color: var(--color-main);
+}
+
+@utility heading-pen {
+    @apply font-pen text-[36px] font-black text-center text-[#222] leading-none;
+}
+
+/* Inputs / form controls */
+@utility input-glass {
+    @apply w-full p-3 rounded-xl bg-white/60 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[var(--color-main)];
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+@utility textarea-glass {
+    @apply input-glass resize-none;
+}
+
+@utility textarea-glass-medium {
+    @apply textarea-glass;
+    height: 10rem;
+}
+
+@utility textarea-glass-tall {
+    @apply textarea-glass;
+    height: 12rem;
 }
 
 /* --------------------------------------------
@@ -127,7 +140,6 @@ body {
     @apply glass p-4;
 }
 
-/* Header / Footer */
 @utility glass-header {
     background: var(--glass-surface);
     backdrop-filter: blur(var(--glass-blur));
@@ -144,9 +156,7 @@ body {
     box-shadow: var(--glass-shadow);
 }
 
-/* --------------------------------------------
-   Glass Button Utilities (복원 및 완전 작동)
---------------------------------------------- */
+
 
 /* bg-surface */
 @utility bg-surface {

@@ -1,2 +1,2 @@
-export { PostSearch } from "./ui/PostSearch";
-export { usePostSearch } from "./model/usePostSearch";
+export { PostSearch ,} from "./ui/PostSearch";
+export { usePostSearch ,} from "./model/usePostSearch";

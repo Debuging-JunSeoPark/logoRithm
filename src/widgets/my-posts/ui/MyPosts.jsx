@@ -7,7 +7,7 @@ export default function MyPosts() {
             fetcher={myPostListRequest}
             title={
                 <>
-                    내가 쓴 글 <br /> My posts
+                    My posts
                 </>
             }
         />

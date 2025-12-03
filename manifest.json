@@ -1,0 +1,15 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "logoRithm",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "logoRithm",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [
+    "social"
+  ],
+  "description": "logoRithm은 개인의 작은 코드 블록을 공유하며 \n소통하는 기록형 커뮤니티 입니다:)"
+}

@@ -1,4 +1,6 @@
 export default function Header() {
+    const isLoggedIn = false;
+
     return (
         <header
             className="

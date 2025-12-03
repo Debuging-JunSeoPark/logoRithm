@@ -1,7 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function usePostSearch() {
     const [search, setSearch] = useState("");
+    const [debouncedInput, setDebouncedInput] = useState(search);
 
-    return { search, setSearch };
+    useEffect(() => {
+
+        const timerID = setTimeout(() => {
+            console.log("콜백 호출");
+            setDebouncedInput(search);
+        }, 1000);
+
+        return () => {
+            clearTimeout(timerID);
+        }
+    }, [search]);
+
+    return { search, setSearch, debouncedInput };
+
+
 }

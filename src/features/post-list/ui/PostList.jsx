@@ -1,11 +1,14 @@
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import { PostListItem } from "@/features/post-list";
 import { usePostListIn } from "@/features/post-list";
 import { useFilteredPosts } from "@/features/post-list";
 
-export function PostList({ search, fetcher }) {
+export const PostList = memo(function PostList({ search, fetcher }) {
     const { posts, loadMore, hasMore, loading } = usePostListIn(fetcher);
-    const filteredPosts = useFilteredPosts(posts, search);
+    const filteredPosts = useMemo(
+        () => useFilteredPosts(posts, search),
+        [posts, search]
+    );
 
     const observerRef = useRef(null);
 
@@ -47,4 +50,4 @@ export function PostList({ search, fetcher }) {
 
         </div>
     );
-}
+});

@@ -8,6 +8,9 @@ export const http = axios.create({
     withCredentials: false,
 });
 
+console.log("🚀 API Base URL:", import.meta.env.VITE_API_BASE_URL);
+console.log("🚀 Axios baseURL:", http.defaults.baseURL);
+
 http.interceptors.request.use((config) => {
     const token = tokenStorage.get();
     if (token) {

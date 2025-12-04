@@ -18,13 +18,6 @@ export default defineConfig({
     },
   },
 
-  optimizeDeps: {
-    exclude: [
-      // zod만 제외해도 충분히 안전함 (ESM 패키지)
-      'zod',
-    ],
-  },
-
   build: {
     sourcemap: false,
 
@@ -33,4 +26,6 @@ export default defineConfig({
       treeshake: true,
     },
   },
+
+  
 });

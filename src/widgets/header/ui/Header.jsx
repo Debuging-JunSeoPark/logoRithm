@@ -16,12 +16,12 @@ export default function Header() {
             <div className="font-pen text-3xl font-extrabold">logoRithm</div>
 
             <nav className="flex items-center gap-3">
-                <button className="text-sm text-gray-600 hover:text-black">
+                {/** <button className="text-sm text-gray-600 hover:text-black">
                     로그인
                 </button>
                 <button className="text-sm text-gray-600 hover:text-black">
                     회원가입
-                </button>
+                </button>*/ }
             </nav>
         </header>
     );

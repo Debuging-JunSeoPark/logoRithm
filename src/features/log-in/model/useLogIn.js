@@ -28,7 +28,6 @@ export function useLogIn() {
                 throw new Error("서버 응답에 accessToken 이 없습니다.");
             }
             tokenStorage.set(token);
-            alert("로그인 성공! <추후에 삭제>");
             navigate(ROUTES.HOME);
             return result;
 

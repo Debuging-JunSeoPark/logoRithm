@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "@/shared/ui/button/Button";
 
 export function CommentForm({ onSubmit }) {
     const [text, setText] = useState("");
@@ -24,26 +25,18 @@ export function CommentForm({ onSubmit }) {
                         setText("");
                     }}
                     className="
+                    
                         relative
                         px-5 py-2
-                        text-sm font-medium text-gray-700
-                        rounded-xl
-                        bg-white
+                        text-sm font-medium text-white
+                        rounded-md
+                        bg-main/60
                         shadow-[0_4px_20px_rgba(0,0,0,0.08)]
                         overflow-hidden
                         active:scale-95 transition
                     "
                 >
                     <span className="relative z-10 text-xs">Submit</span>
-
-                    <span
-                        className="
-                            absolute inset-0
-                            bg-gradient-to-r from-transparent via-orange-200 to-orange-400
-                            opacity-60 blur-xl
-                            pointer-events-none
-                            "
-                    />
                 </button>
 
             </div>

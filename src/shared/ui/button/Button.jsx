@@ -17,7 +17,7 @@ export default function Button({
             hover:bg-main/70
             active:bg-main/90
 
-            disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300 disabled:active:scale-100
+            disabled:bg-gray-300 disabled:text-gray-500 disabled:border-gray-300 disabled:active:scale-100 disabled:shadow-black/20
             
         `,
         secondary: `

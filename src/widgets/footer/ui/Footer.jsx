@@ -18,7 +18,6 @@ export default function Footer() {
         z-50
       "
     >
-      {/* 1. Home */}
       <NavLink
         to="/"
         className={({ isActive }) =>
@@ -44,7 +43,6 @@ export default function Footer() {
         Home
       </NavLink>
 
-      {/* 2. Mine */}
       <NavLink
         to={ROUTES.MY_POSTS}
         className={({ isActive }) =>
@@ -70,10 +68,10 @@ export default function Footer() {
         Mine
       </NavLink>
 
-      {/* 3. New */}
+
       <NavLink
         to="/posts/new"
-         className={({ isActive }) =>
+        className={({ isActive }) =>
           `relative flex-1 h-full flex flex-col items-center justify-center text-xs
             after:transition-all after:duration-200
             ${isActive
@@ -91,7 +89,6 @@ export default function Footer() {
         New
       </NavLink>
 
-      {/* 4. Chat */}
       <button className="flex-1 flex flex-col items-center justify-center text-xs text-gray-700">
         <svg fill="none" strokeWidth={1.5} stroke="currentColor"
           className={iconStyle} viewBox="0 0 24 24">
@@ -114,7 +111,6 @@ export default function Footer() {
         Chat
       </button>
 
-      {/* 5. My Page */}
       <NavLink
         to="/my-page"
         className={({ isActive }) =>

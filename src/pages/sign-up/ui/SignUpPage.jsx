@@ -18,8 +18,6 @@ export default function SignUpPage() {
                     before:absolute before:inset-0 before:bg-black/5 before:rounded-2xl before:pointer-events-none
                 "
             >
-
-
                 <SignUpForm />
             </div>
 

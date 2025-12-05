@@ -7,7 +7,6 @@ export function usePostSearch() {
     useEffect(() => {
 
         const timerID = setTimeout(() => {
-            console.log("콜백 호출");
             setDebouncedInput(search);
         }, 1000);
 

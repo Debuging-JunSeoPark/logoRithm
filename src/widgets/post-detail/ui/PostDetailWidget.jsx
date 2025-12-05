@@ -9,7 +9,7 @@ import {
 } from "@/features/post-detail";
 
 export function PostDetailWidget({ postId }) {
-    const { post, loading, onToggleLike, onDelete,onUpdatePost } = usePostDetail(postId);
+    const { post, loading, onToggleLike, onDelete, onUpdatePost } = usePostDetail(postId);
     const { comments, addComment, removeComment } = useComments(postId);
     const [isEditMode, setIsEditMode] = useState(false);
 
@@ -33,9 +33,9 @@ export function PostDetailWidget({ postId }) {
                 <EditPostForm
                     post={post}
                     onSubmit={(data) => {
-        onUpdatePost(data);
-        setIsEditMode(false);  // 수정 완료 후 다시 상세 화면으로
-    }}
+                        onUpdatePost(data);
+                        setIsEditMode(false); 
+                    }}
                     onCancel={() => setIsEditMode(false)}
                 />
             )}

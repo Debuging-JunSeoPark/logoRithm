@@ -33,15 +33,12 @@ export const PostList = memo(function PostList({ search, fetcher }) {
                 <PostListItem key={post.post_id} post={post} />
             ))}
 
-            {/* 무한스크롤 트리거 */}
             <div ref={observerRef} className="h-10" />
 
-            {/* 로딩중 표시 */}
             {loading && (
                 <div className="text-gray-400 text-center py-4">Loading…</div>
             )}
 
-            {/* 마지막 페이지 도달 */}
             {!hasMore && !loading && (
                 <div className="text-gray-500 text-center py-4">
                     All posts have been loaded.

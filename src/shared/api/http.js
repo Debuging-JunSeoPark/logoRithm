@@ -8,9 +8,6 @@ export const http = axios.create({
     withCredentials: false,
 });
 
-console.log("🚀 API Base URL:", import.meta.env.VITE_API_BASE_URL);
-console.log("🚀 Axios baseURL:", http.defaults.baseURL);
-
 http.interceptors.request.use((config) => {
     const token = tokenStorage.get();
     if (token) {
@@ -28,7 +25,6 @@ http.interceptors.response.use(
         if (status === 401) {
             tokenStorage.clear();
 
-            // 토큰 만료 시 로그인 페이지로 이동
             if (window.location.pathname !== ROUTES.LOG_IN) {
                 window.location.replace(ROUTES.LOG_IN);
             }

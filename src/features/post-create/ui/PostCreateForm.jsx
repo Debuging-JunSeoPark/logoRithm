@@ -15,14 +15,12 @@ export function PostCreateForm({ onSubmit, loading }) {
             onSubmit={handleSubmit}
             className="flex flex-col gap-6"
         >
-            {/* Form Container */}
             <div
                 className="
                     glass-form
                     p-6 rounded-2xl space-y-6
                     "
             >
-                {/* Title */}
                 <input
                     type="text"
                     className="input-glass"
@@ -32,7 +30,6 @@ export function PostCreateForm({ onSubmit, loading }) {
                     required
                 />
 
-                {/* Content */}
                 <textarea
                     className="textarea-glass-tall"
                     placeholder="Write your content in Markdown..."
